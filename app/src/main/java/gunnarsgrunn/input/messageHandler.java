@@ -2,10 +2,10 @@ package gunnarsgrunn.input;
 
 import java.util.Scanner;
 
-import gunnarsgrunn.generation.passwordGenerator;
-import gunnarsgrunn.file.fileHandler;
+import gunnarsgrunn.generation.PasswordGenerator;
+import gunnarsgrunn.file.FileHandler;
 
-public class messageHandler {
+public class MessageHandler {
 
     public static void handleTypeSelect() {
         Scanner scanner = new Scanner(System.in);
@@ -32,7 +32,7 @@ public class messageHandler {
         System.out.print("Domain lookup (str): ");
         String domain = scanner.next();
 
-        String password = fileHandler.getPasswordByDomain(domain);
+        String password = FileHandler.getPasswordByDomain(domain);
 
         System.out.println("\nPassword for '" + domain + "' is: " + password);
         scanner.close();
@@ -57,14 +57,14 @@ public class messageHandler {
 
         while (true) {
             // Generate Password
-            String password = passwordGenerator.generatePassword(length, includeSymbols);
+            String password = PasswordGenerator.generatePassword(length, includeSymbols);
             System.out.println("\nPassword: " + password);
 
             // Save Password
             System.out.print("Retry? (y/n): ");
             String response = scanner.next();
             if (response.equalsIgnoreCase("n")) {
-                fileHandler.savePasswordToFile(domain, password);
+                FileHandler.savePasswordToFile(domain, password);
                 System.out.println("\nPassword saved!");
                 break;
             }

@@ -2,9 +2,9 @@ package gunnarsgrunn.generation;
 
 import java.security.SecureRandom;
 
-import gunnarsgrunn.input.messageHandler;
+import gunnarsgrunn.input.MessageHandler;
 
-public class passwordGenerator {
+public class PasswordGenerator {
     private static final String LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final String NUMBERS = "0123456789";
     private static final String SYMBOLS = "!@#$%^&*";
@@ -47,6 +47,6 @@ public class passwordGenerator {
     }
 
     public static void main(String[] args) {
-        messageHandler.handleTypeSelect();
+        MessageHandler.handleTypeSelect();
     }
 }

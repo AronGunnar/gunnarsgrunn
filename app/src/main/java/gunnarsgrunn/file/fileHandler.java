@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class fileHandler {
+public class FileHandler {
 
     private static final String FILE_PATH = "bin.json";
 
