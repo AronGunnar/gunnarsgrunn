@@ -5,8 +5,14 @@ import java.util.Scanner;
 import gunnarsgrunn.generation.PasswordGenerator;
 import gunnarsgrunn.file.FileHandler;
 
+/**
+ * This class handles user input and displays messages.
+ */
 public class MessageHandler {
 
+    /**
+     * Handles the user input for selecting an operation.
+     */
     public static void handleTypeSelect() {
         Scanner scanner = new Scanner(System.in);
         System.out
@@ -24,6 +30,9 @@ public class MessageHandler {
         scanner.close();
     }
 
+    /**
+     * Fetches a password by domain.
+     */
     private static void fetchPass() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("\n---===::: : Fishing for password : :::===---\n");
@@ -38,6 +47,9 @@ public class MessageHandler {
         scanner.close();
     }
 
+    /**
+     * Creates a password for a domain.
+     */
     private static void createPass() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("\n---===::: : Forging a password : :::===---\n");
@@ -72,6 +84,9 @@ public class MessageHandler {
         scanner.close();
     }
 
+    /**
+     * Displays the help message.
+     */
     private static void help() {
         System.out.print("\n---===::: : How to use : :::===---\n");
         System.out.println("1. Fetch Password: Retrieve a password by domain.");

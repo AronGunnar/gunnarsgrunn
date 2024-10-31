@@ -7,10 +7,19 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+/**
+ * This class handles file operations for saving and retrieving passwords.
+ */
 public class FileHandler {
 
     private static final String FILE_PATH = "bin.json";
 
+    /**
+     * Saves a password to a file.
+     *
+     * @param domain   the domain for which the password is saved
+     * @param password the password to save
+     */
     public static void savePasswordToFile(String domain, String password) {
         try {
             JSONObject jsonData = new JSONObject();
@@ -39,6 +48,12 @@ public class FileHandler {
         }
     }
 
+    /**
+     * Retrieves a password from a file by domain.
+     *
+     * @param domain the domain for which to retrieve the password
+     * @return the password for the specified domain
+     */
     public static String getPasswordByDomain(String domain) {
         try {
             File file = new File(FILE_PATH);

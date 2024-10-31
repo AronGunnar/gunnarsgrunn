@@ -2,12 +2,22 @@ package gunnarsgrunn.generation;
 
 import java.security.SecureRandom;
 
+/**
+ * This class generates a random password.
+ */
 public class PasswordGenerator {
     private static final String LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final String NUMBERS = "0123456789";
     private static final String SYMBOLS = "!@#$%^&*";
     private static final SecureRandom RANDOM = new SecureRandom();
 
+    /**
+     * Generates a random password with the specified length.
+     * 
+     * @param length         the length of the password
+     * @param includeSymbols whether to include symbols in the password
+     * @return a randomly generated password
+     */
     public static String generatePassword(int length, boolean includeSymbols) {
         StringBuilder password = new StringBuilder(length);
 
@@ -31,7 +41,12 @@ public class PasswordGenerator {
         return shuffleString(password.toString());
     }
 
-    // Helper method to shuffle the generated password for randomness
+    /**
+     * Shuffles the characters of a string.
+     * 
+     * @param input the input string
+     * @return the shuffled string
+     */
     private static String shuffleString(String input) {
         char[] characters = input.toCharArray();
         for (int i = 0; i < characters.length; i++) {
