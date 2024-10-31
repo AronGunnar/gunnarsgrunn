@@ -2,8 +2,6 @@ package gunnarsgrunn.generation;
 
 import java.security.SecureRandom;
 
-import gunnarsgrunn.input.MessageHandler;
-
 public class PasswordGenerator {
     private static final String LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final String NUMBERS = "0123456789";
@@ -44,9 +42,5 @@ public class PasswordGenerator {
             characters[randomIndex] = temp;
         }
         return new String(characters);
-    }
-
-    public static void main(String[] args) {
-        MessageHandler.handleTypeSelect();
     }
 }
