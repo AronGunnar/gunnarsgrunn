@@ -35,6 +35,7 @@ public class messageHandler {
         String password = fileHandler.getPasswordByDomain(domain);
 
         System.out.println("\nPassword for '" + domain + "' is: " + password);
+        scanner.close();
     }
 
     private static void createPass() {

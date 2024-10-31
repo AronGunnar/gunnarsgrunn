@@ -5,7 +5,8 @@ import java.security.SecureRandom;
 import gunnarsgrunn.input.messageHandler;
 
 public class passwordGenerator {
-    private static final String LETTERS_NUMBERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    private static final String LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    private static final String NUMBERS = "0123456789";
     private static final String SYMBOLS = "!@#$%^&*";
     private static final SecureRandom RANDOM = new SecureRandom();
 
@@ -18,7 +19,11 @@ public class passwordGenerator {
             length--;
         }
 
-        String characterSet = includeSymbols ? LETTERS_NUMBERS + SYMBOLS : LETTERS_NUMBERS;
+        // Ensure at least one number is included
+        password.append(NUMBERS.charAt(RANDOM.nextInt(NUMBERS.length())));
+        length--;
+
+        String characterSet = includeSymbols ? LETTERS + NUMBERS + SYMBOLS : LETTERS + NUMBERS;
 
         for (int i = 0; i < length; i++) {
             password.append(characterSet.charAt(RANDOM.nextInt(characterSet.length())));
