@@ -1,6 +1,6 @@
 # Password Manager
 
-A simple Java-based password manager that securely stores and retrieves passwords associated with different domains using encryption. This application utilizes AES encryption to ensure that your sensitive information remains secure.
+A simple Java-based password manager that securely stores and retrieves passwords associated with different domains using encryption. This application utilizes AES-256 encryption.
 
 ## Features
 
@@ -16,3 +16,4 @@ A simple Java-based password manager that securely stores and retrieves password
 
 ## Setup
 idk figure it out.
+- Run command: java -jar gunnarsgrunn.jar
