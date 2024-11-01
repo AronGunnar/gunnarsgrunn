@@ -1,7 +1,6 @@
 package gunnarsgrunn.input;
 
 import java.util.Scanner;
-
 import gunnarsgrunn.generation.PasswordGenerator;
 import gunnarsgrunn.file.FileHandler;
 
@@ -10,13 +9,18 @@ import gunnarsgrunn.file.FileHandler;
  */
 public class MessageHandler {
 
+    private static final Scanner scanner = new Scanner(System.in);
+
     /**
      * Handles the user input for selecting an operation.
      */
     public static void handleTypeSelect() {
-        Scanner scanner = new Scanner(System.in);
-        System.out
-                .print("Select operation: (1) Fetch Password, (2) Create Password, (3) Help\n> ");
+
+        System.out.print("\n---===::: : Password Manager : :::===---\n");
+        System.out.println("Please enter your encryption key (str): "); // "your_password" is used in development
+        FileHandler.setKey(scanner.next());
+
+        System.out.print("\nSelect operation: (1) Fetch Password, (2) Create Password, (3) Help\n> ");
         int choice = scanner.nextInt();
         if (choice == 1) {
             fetchPass();
@@ -27,31 +31,28 @@ public class MessageHandler {
         } else {
             System.out.println("Invalid choice. Please select 1, 2, or 3.");
         }
-        scanner.close();
     }
 
     /**
      * Fetches a password by domain.
      */
     private static void fetchPass() {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("\n---===::: : Fishing for password : :::===---\n");
 
         // Domain
         System.out.print("Domain lookup (str): ");
         String domain = scanner.next();
 
+        // Get Password
         String password = FileHandler.getPasswordByDomain(domain);
-
-        System.out.println("\nPassword for '" + domain + "' is: " + password);
-        scanner.close();
+        System.out
+                .println("\nPassword for '" + domain + "' is: " + (password != null ? password : "No password found."));
     }
 
     /**
      * Creates a password for a domain.
      */
     private static void createPass() {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("\n---===::: : Forging a password : :::===---\n");
 
         // Domain
@@ -81,7 +82,6 @@ public class MessageHandler {
                 break;
             }
         }
-        scanner.close();
     }
 
     /**
@@ -93,9 +93,14 @@ public class MessageHandler {
         System.out.println("2. Create Password: Generate and save a password for a domain.");
         System.out.println("3. Help: Display this help message.\n");
 
+        System.out.println("- Domains are case-sensitive, use only lowercase.");
+        System.out.println("- Wrong encryption key will NOT decrypt passwords.");
+        System.out.println("- Encryption key is not stored, make sure to remember it.");
+        System.out.println("- If the same domain as an already stored password is used, it will be overwritten.\n");
+
         System.out.println("NOTE: Passwords are saved in 'bin.json', make sure to backup this file.");
         System.out.println("      Passwords are generated using a cryptographically secure random number generator.");
-        System.out.println("      If the same domain as an already stored password is used, it will be overwritten.\n");
+        System.out.println("      Encryption uses AES-256 with a key derived from user-provided input.\n");
 
         System.out.println("- Aron Gunnar, 2024\n");
     }

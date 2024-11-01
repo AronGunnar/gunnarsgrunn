@@ -1,4 +1,4 @@
-package gunnarsgrunn.security;
+package gunnarsgrunn.file;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
